@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>dooleen-service-app-mc</artifactId>
+	<groupId>com.dooleen.service.app.mc.msg</groupId>
+	<version>${dooleen.version}</version>
+	<packaging>jar</packaging>
+	<name>dooleen-service-app-mc</name>
+	<repositories>
+		<repository>
+			<id>getui-nexus</id>
+			<url>http://mvn.gt.getui.com/nexus/content/repositories/releases/</url>
+		</repository>
+	</repositories>
+	<parent>
+		<groupId>com.dooleen</groupId>
+		<artifactId>dooleen-common-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../dooleen-common-parent</relativePath>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>com.dooleen</groupId>
+			<artifactId>dooleen-common-core</artifactId>
+			<version>${dooleen.common.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<!-- 微信开发需要的api start -->
+		<!--微信模版消息推送三方sdk-->
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+		<!-- dom4j -->
+		<dependency>
+			<groupId>org.dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<!-- xstream -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.10</version>
+		</dependency>
+		<!-- jfinal -->
+		<dependency>
+			<groupId>com.jfinal</groupId>
+			<artifactId>jfinal</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<!-- 微信开发需要的api end -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20200518</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.2.11</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!--腾讯云短信发送-->
+		<dependency>
+			<groupId>com.github.qcloudsms</groupId>
+			<artifactId>qcloudsms</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.gexin.platform</groupId>
+			<artifactId>gexin-rp-sdk-http</artifactId>
+			<version>4.1.2.0</version>
+		</dependency>
+
+		<!--钉钉工具包-->
+		<dependency>
+			<groupId>com.ganshane.specs</groupId>
+			<artifactId>dingtalk-sdk</artifactId>
+			<version>20210115</version>
+		</dependency>
+
+		<!--websocket作为客户端 ,主要为了发站内消息-->
+		<dependency>
+			<groupId>org.java-websocket</groupId>
+			<artifactId>Java-WebSocket</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+	</dependencies>
+
+</project>

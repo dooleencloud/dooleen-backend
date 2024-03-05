@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>卡特尔十六项人格测验分析报告</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        h1, h4, .name {
+            text-align: center;
+        }
+
+        .primary {
+            margin-bottom: 20px;
+            width: 1000px;
+        }
+
+        .SixtfacC {
+            padding-left: 20px;
+        }
+
+        .strong {
+            font-weight: bold;
+        }
+
+
+        .floatL p {
+            display: inline-block;
+        }
+
+        #clearFloat {
+            margin-left: 10px;
+        }
+
+        .fontSize {
+            font-size: 20px;
+        }
+
+        .tendency {
+            text-align: center;
+        }
+
+        .SinTeenTB {
+            border: none;
+        }
+
+        .SinTeenTB td {
+            border: 0.5px solid black;
+        }
+
+        .SinTeenTB .rightTD {
+            border-right: none;
+        }
+
+        .SinTeenTB .bothTD {
+            border-right: none;
+            border-left: none;
+        }
+
+        .SinTeenTB .leftTD {
+            border-left: none;
+        }
+
+
+        td {
+            /*width:100%;*/
+            /*word-break:keep-all;*/ /* 不换行 */
+            /*white-space:nowrap;*/ /* 不换行 */
+            /*overflow:hidden;*/ /* 内容超出宽度时隐藏超出部分的内容 */
+            /*text-overflow:ellipsis;*/ /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+        }
+
+        .feature {
+            width: 100px;
+        }
+    </style>
+
+    <script type="text/javascript" src="/biz/sixteen/js/html2canvas.js"></script>
+    <script type="text/javascript" src="/biz/sixteen/js/jsPdf.debug.js"></script>
+    <script language="JavaScript">
+        function genPdf(){
+            var shareContent = document.querySelector('#content')
+            var width = shareContent.offsetWidth / 2
+            var height = shareContent.offsetHeight / 2
+            let _this = this
+            html2canvas(document.getElementById("content"), {
+                onrendered:function(canvas) {
+                    var context = canvas.getContext('2d')
+                    context.scale(2, 2);
+                    context.mozImageSmoothingEnabled = false
+                    context.webkitImageSmoothingEnabled = false
+                    context.msImageSmoothingEnabled = false
+                    context.imageSmoothingEnabled = false
+                    var pageData = canvas.toDataURL('image/jpeg', 1.0)
+                    var img = new Image()
+                    img.src = pageData
+                    img.onload = function () {
+                        // 获取dom高度、宽度
+                        img.width = img.width / 2
+                        img.height = img.height / 2
+                        img.style.transform = 'scale(0.5)'
+                        if (width > height) {
+                            // 此可以根据打印的大小进行自动调节
+                            // eslint-disable-next-line
+                            var pdf = new jsPDF('l', 'mm', [
+                                width * 0.505,
+                                height * 0.5
+                            ])
+                        } else {
+                            // eslint-disable-next-line
+                            var pdf = new jsPDF('p', 'mm', [
+                                width * 0.505,
+                                height * 0.5
+                            ])
+                        }
+                        pdf.addImage(
+                            pageData,
+                            'jpeg',
+                            0,
+                            0,
+                            width * 0.505,
+                            height * 0.5
+                        )
+                        pdf.save('${report.userInfo.realName}的人格测试报告.pdf');
+                    }
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="content" style="background-color: #ffffff; width: 900px; margin:0 auto;padding:50px">
+    <h1>卡特尔十六项人格测验报告</h1>
+    <h4 style="padding-left: 200px;">--由数云信息提供</h4>
+    <div style="border-bottom: 1px solid #808080; background-color: #f7f3f3; width: 800px; margin: 5px auto; height: 70px;">
+        <table style="width: 800px; text-align: center; margin: 10px; padding: 8px;">
+            <tr>
+                <td  style=" text-align:left">
+                    <font style="font-weight: bold">考试姓名：</font>${report.userInfo.realName}
+                </td>
+                <td>
+                    <font style="font-weight: bold">性别：</font>${report.userInfo.sex}
+                </td>
+                <td>
+                    <font style="font-weight: bold">年龄：</font>${report.userInfo.age}岁
+                </td>
+                <td style="text-align:left">
+                    <font style="font-weight: bold;">电话：</font>${report.userInfo.phone}
+                </td>
+                <td>
+                    <font style="font-weight: bold">测试时长：</font>${report.userInfo.takeTime}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height:30px; text-align:left">
+                    <font style="font-weight: bold">组织名称：</font>${report.userInfo.orgName}
+                </td>
+                <td style="text-align:left">
+                    <font style="font-weight: bold;text-align:left">测试时间：</font>${report.userInfo.answerBeginTime}
+                </td>
+                <td>
+                    <a href="#" onclick="genPdf()">下载报告</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin: 0px auto 20px auto; width: 800px; padding: 20px 0 0 0;">
+        <table cellspacing="0" class="SinTeenTB" style="table-layout: fixed; width: 100%; height: auto; border: 0.5px solid;">
+
+            <tr>
+                <td rowspan="2" class="tendency" style="width: 3%">因素</td>
+                <td rowspan="2" class="tendency" style="width: 3%">原始分</td>
+                <td rowspan="2" class="tendency" style="width: 3%">标准分</td>
+                <td rowspan="2" class="tendency feature" style="width: 26%">低分特征</td>
+                <td colspan="10" class="tendency" style="width: 39%;">标准分</td>
+                <td rowspan="2" class="tendency feature" style="width: 26%">高分特征</td>
+            </tr>
+            <tr>
+                <td class="tendency rightTD">1</td>
+                <td class="tendency bothTD">2</td>
+                <td class="tendency bothTD">3</td>
+                <td class="tendency bothTD">4</td>
+                <td class="tendency leftTD">5</td>
+                <td class="tendency bothTD">6</td>
+                <td class="tendency bothTD">7</td>
+                <td class="tendency bothTD">8</td>
+                <td class="tendency bothTD">9</td>
+                <td class="tendency leftTD">10</td>
+            </tr>
+        <#assign num=0>
+        <#list report.userAnalysis as column>
+            <#assign num++>
+            <#if column.factorType = "16PF">
+                <td class="tendency" style="height: 40px;">${column.factorId}</td>
+                <td class="tendency" style="height: 40px;">${column.score}</td>
+                <td class="tendency" style="height: 40px;">${column.statusScore}</td>
+                <td class="tendency  feature" style="width: 200px; height: 40px;" title="${column.lowScoreFeatures}">${column.lowScoreFeatures}</td>
+                <#if num = 15>
+                    <#if column.statusScore <= 5>
+                    <td colspan="5" class="tendency" style="height: 40px; padding: 0px; margin: 0px;">
+                        <div style="width: ${(5.5 - column.statusScore)*31}px;  padding: 4px 0 0 0;  background-color: #1155cc; height: 26px; float: right; display: inline-block; text-align: center; color: white;">
+                            ${column.statusScore}
+                        </div>
+                    </td>
+                    <td colspan="5" class="tendency" style="height: 40px; border-left: 0px;"></td>
+                    <#else>
+                    <td colspan="5" class="tendency" style="height: 40px;"></td>
+                    <td colspan="5" class="tendency" style="height: 40px; padding: 0px; margin: 0px; border-left: 0px;">
+                        <div style="width: ${(column.statusScore - 5.5)*31}px;  padding: 4px 0 0 0;  margin: 0px; background-color: #f1503e; height: 26px; float: left; display: inline-block; color: white;">
+                            ${column.statusScore}
+                        </div>
+                    </td>
+                    </#if>
+                <#else>
+                    <#if column.statusScore <= 5>
+                <td colspan="5" class="tendency" style="height: 40px; padding: 0px; margin: 0px;">
+                    <div style="width:  ${(5.5 - column.statusScore)*31}px; background-color: #1155cc; padding: 4px 0 0 0;  height: 26px; float: right; display: inline-block; color: white;">
+                        ${column.statusScore}
+                    </div>
+                </td>
+                <td colspan="5" class="tendency" style="border-left: 0px;"></td>
+                    <#else>
+                <td colspan="5" class="tendency" style="height: 40px;"></td>
+                <td colspan="5" class="tendency" style="height: 40px; padding: 0px; margin: 0px; border-left: 0px;">
+                    <div style="width: ${(column.statusScore - 5.5)*31}px; padding: 4px 0 0 0; margin: 0px; background-color: #f1503e; height: 26px; float: left; display: inline-block; color: white;">
+                        ${column.statusScore}
+                    </div>
+                </td>
+                    </#if>
+                </#if>
+                <td class="tendency feature" style="width: 200px; height: 40px;" title="${column.highScoreFeatures}">
+                    ${column.highScoreFeatures}
+                </td>
+            </tr>
+            </#if>
+        </#list>
+
+            <tr>
+                <td colspan="2" style="font-weight: bold; text-align: center;">次级<br/>因素</td>
+                <td colspan="13" style="padding: 0px; border: solid 0px;">
+                    <table cellspacing="0" style="border: none; width: 100%;">
+                    <tr>
+                        <td width="50%" >
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="boder:none; padding: 0px; margin: 0px;">
+                    <#assign anNum=0>
+                    <#list report.userAnalysis as column>
+                        <#if column.factorType = "8SF">
+                            <#assign anNum++>
+                            <tr>
+                                <td style="padding: 5px; border: solid 0px;border-bottom:1px solid black;">${column.factorId}</td>
+                                <td style="padding: 5px; border: 1px solid black;border-top:0px solid black;">${column.factor}</td>
+                                <td style="padding: 5px; border: solid 0px;border-bottom:1px solid black;color: red;">${column.statusScore}</td>
+                            </tr>
+                            <#if anNum%4 = 0 && anNum <= 4>
+                          </table>
+                        </td>
+                        <td width="50%">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="boder:none; padding: 0px; margin: 0px;">
+                            </#if>
+                        </#if>
+                    </#list>
+                        </table>
+                      </td>
+                    </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin: 0px auto 20px auto; width: 800px; padding: 20px 0 0 0;">
+        <div style=" background-color: #f7f3f3; padding:5px 5px 0 5px;width:250px;font-size:20px; height:30px; font-weight: bold;"><font sytle=" font-size:20px;  font-weight: bold;">一.16PF测评结果分析</font></div>
+        <#assign num=0>
+        <#assign type = "16PF">
+        <#list report.userAnalysis as column>
+            <#assign num++>
+        <#if column.factorType != type>
+            <#assign type = column.factorType>
+            <div style=" background-color: #f7f3f3; padding:5px 5px 0 5px; margin-top:5px;width:270px;font-size:20px;height:30px;   font-weight: bold;"><font sytle=" font-size:20px;  font-weight: bold;">二.次级因素测评结果分析</font></div>
+        </#if>
+        <div style="font-size: 14px; line-height: 25px; border-bottom: 1px dashed #d3d3d3; padding: 15px;">
+            <font style="font-weight: bold; font-size: 16px; font-family: 黑体;">${column.factorId}-${column.factor}> </font>
+            (标准得分:${column.statusScore}) ,您的状态为：
+            <font style="color: #f00;">${column.status} </font>
+        <#if column.highScoreFeatures = "" || column.highScoreFeatures = " ">
+            <br /> <font style="font-weight: bold; font-size: 16px; font-family: 黑体;">说明：</font>${column.lowScoreFeatures}
+        </div>
+        <#else>
+        <br />
+        <font style="font-weight: bold; font-size: 16px; font-family: 黑体;">高分：</font>${column.highScoreFeatures}<br/>
+        <font style="font-weight: bold; font-size: 16px; font-family: 黑体;">低分：</font>${column.lowScoreFeatures}
+        </div>
+        </#if>
+   </#list>
+
+    <div style="padding: 20px; font-size: 14px; font-weight: bold; text-align: center; border-top:1px solid #808080;">
+        注：以上测评结果仅供参考，不代表数云信息的评判意见！
+    </div>
+</div>
+</div>
+</body>
+</html>

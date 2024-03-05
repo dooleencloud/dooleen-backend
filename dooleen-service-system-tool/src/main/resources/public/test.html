@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+body {
+	font-family: SimSun;
+	width: 794px;
+}
+
+.content {
+	width: 90%;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-margin {
+	margin-right: 50px;
+}
+
+.text {
+	text-indent: 2em;
+}
+
+.content p, .content table, .content h1, .content h2, .content h3,
+	.content h4, .content h5 {
+	width: 95%;
+}
+
+.part2-t {
+	font-size: 1.17em;
+}
+
+.content table {
+	border: solid #000000 0.1px;
+	border-collapse: collapse;
+}
+
+.content table tr {
+	height: 50px;
+}
+
+.content table tr td {
+	border: solid #000000 0.1px;
+}
+</style>
+</head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+		crossorigin="anonymous">
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+<body>
+	<div class="content">
+		<h3 class="text-center">${title}</h3>
+		<p class="text-left text-margin">尊敬的皮皮虾您好：</p>
+		<table>
+			<tr>
+				<td>姓名</td>
+				<td>角色</td>
+				<td>菜单</td>
+			</tr>
+			<#list userList as list>
+			<tr>
+				<td>${list.userName}</td>
+				<td>${list.roleName}</td>
+				<td>${list.menuName}</td>
+			</tr>
+			</#list>
+		</table>
+
+		<p class="text-right text-margin-right">姓名：${reportUser}</p>
+		<p class="text-right text-margin-right">日期：${reportDate}</p>
+		<p class="text-right text-margin-right">
+			图片： <img src="${pic}" />
+		</p>
+	</div>
+	<div class="input-group">
+		<span class="input-group-addon" id="basic-addon1">@</span> <input
+			type="text" class="form-control" placeholder="Username"
+			aria-describedby="basic-addon1">
+	</div>
+
+	<div class="input-group">
+		<input type="text" class="form-control"
+			placeholder="Recipient's username" aria-describedby="basic-addon2">
+			<span class="input-group-addon" id="basic-addon2">@example.com</span>
+	</div>
+
+	<div class="input-group">
+		<span class="input-group-addon">$</span> <input type="text"
+			class="form-control" aria-label="Amount (to the nearest dollar)">
+			<span class="input-group-addon">.00</span>
+	</div>
+
+	<label for="basic-url">Your vanity URL</label>
+	<div class="input-group">
+		<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+		<input type="text" class="form-control" id="basic-url"
+			aria-describedby="basic-addon3">
+	</div>
+</body>
+
+</html>

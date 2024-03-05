@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "frequent",
+      "type": "com.dooleen.service.app.gateway.conf.FrequentUrlsPropertiesConfig",
+      "sourceType": "com.dooleen.service.app.gateway.conf.FrequentUrlsPropertiesConfig"
+    },
+    {
+      "name": "notchecktoken",
+      "type": "com.dooleen.service.app.gateway.conf.NotCheckTokenUrlsPropertiesConfig",
+      "sourceType": "com.dooleen.service.app.gateway.conf.NotCheckTokenUrlsPropertiesConfig"
+    },
+    {
+      "name": "notencode",
+      "type": "com.dooleen.service.app.gateway.conf.NotEncodeConfig",
+      "sourceType": "com.dooleen.service.app.gateway.conf.NotEncodeConfig"
+    },
+    {
+      "name": "urls",
+      "type": "com.dooleen.service.app.gateway.conf.FilterUrlsPropertiesConfig",
+      "sourceType": "com.dooleen.service.app.gateway.conf.FilterUrlsPropertiesConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "frequent.anon",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.dooleen.service.app.gateway.conf.FrequentUrlsPropertiesConfig"
+    },
+    {
+      "name": "notchecktoken.anon",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.dooleen.service.app.gateway.conf.NotCheckTokenUrlsPropertiesConfig"
+    },
+    {
+      "name": "notencode.anon",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.dooleen.service.app.gateway.conf.NotEncodeConfig"
+    },
+    {
+      "name": "urls.anon",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.dooleen.service.app.gateway.conf.FilterUrlsPropertiesConfig"
+    }
+  ],
+  "hints": []
+}

@@ -1,0 +1,57 @@
+{
+  "groups": [
+    {
+      "name": "redirect",
+      "type": "com.dooleen.service.file.wps.propertie.RedirectProperties",
+      "sourceType": "com.dooleen.service.file.wps.propertie.RedirectProperties"
+    },
+    {
+      "name": "upload",
+      "type": "com.dooleen.service.file.wps.propertie.UploadProperties",
+      "sourceType": "com.dooleen.service.file.wps.propertie.UploadProperties"
+    },
+    {
+      "name": "wps.convert",
+      "type": "com.dooleen.service.file.wps.propertie.ConvertProperties",
+      "sourceType": "com.dooleen.service.file.wps.propertie.ConvertProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "redirect.key",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.service.file.wps.propertie.RedirectProperties"
+    },
+    {
+      "name": "redirect.value",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.service.file.wps.propertie.RedirectProperties"
+    },
+    {
+      "name": "upload.file-location",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.service.file.wps.propertie.UploadProperties"
+    },
+    {
+      "name": "wps.convert.appid",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.service.file.wps.propertie.ConvertProperties"
+    },
+    {
+      "name": "wps.convert.appsecret",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.service.file.wps.propertie.ConvertProperties"
+    },
+    {
+      "name": "wps.convert.convert",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.service.file.wps.propertie.ConvertProperties"
+    },
+    {
+      "name": "wps.convert.query",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.service.file.wps.propertie.ConvertProperties"
+    }
+  ],
+  "hints": []
+}

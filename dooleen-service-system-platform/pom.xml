@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<artifactId>dooleen-service-system-platform</artifactId>
+	<version>${dooleen.version}</version>
+	<packaging>jar</packaging>
+	<name>dooleen-service-system-platform</name>
+	
+	<parent>
+		<groupId>com.dooleen</groupId>
+		<artifactId>dooleen-common-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../dooleen-common-parent</relativePath>
+	</parent>
+	<dependencies>
+		 <dependency>
+			<groupId>com.dooleen</groupId>
+			<artifactId>dooleen-common-core</artifactId>
+	        <version>${dooleen.version}</version>
+			 <exclusions>
+				 <exclusion>
+					 <artifactId>poi</artifactId>
+					 <groupId>org.apache.poi</groupId>
+				 </exclusion>
+			 </exclusions>
+		</dependency>
+
+		<!-- mongodb -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+
+		<!-- Jackson对自动解析JSON和XML格式的支持 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		<!-- License -->
+		<dependency>
+			<groupId>de.schlichtherle.truelicense</groupId>
+			<artifactId>truelicense-core</artifactId>
+			<version>1.33</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<!-- 必须加jdk的版本号 -->
+			<classifier>jdk15</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-mate-starter</artifactId>
+			<version>1.0.18</version>
+		</dependency>
+	</dependencies>
+
+</project>

@@ -1,0 +1,184 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>    
+
+	<groupId>com.dooleen.service.server.turbine</groupId>
+	<artifactId>dooleen-service-server-turbine</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>dooleen-service-server-turbine</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>
+	</parent>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR2</version>
+				<!-- <version>Hoxton.SR2</version> -->
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- <dependency>
+			<groupId>io.zipkin.java</groupId>
+			<artifactId>zipkin-server</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<!-- <artifactId>spring-cloud-starter-eureka</artifactId> -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-netflix-turbine</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<!-- 打包设置 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/lib</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<stripVersion>false</stripVersion>
+							<includeScope>runtime</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*.properties</exclude>
+						<exclude>**/*.xml</exclude>
+						<exclude>**/*.yml</exclude>
+						<exclude>static/**</exclude>
+						<exclude>templates/**</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<layout>ZIP</layout>
+					<includes>
+						<include>
+							<groupId>non-exists</groupId>
+							<artifactId>non-exists</artifactId>
+						</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<attach>false</attach>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<!--这句很重要，ant会加载antcontrib.properties中定义的标签 -->
+								<taskdef
+										resource="net/sf/antcontrib/antcontrib.properties"
+										classpathref="maven.runtime.classpath" />
+								<if>
+									<contains string="${project.artifactId}"
+											  substring="dooleen-common-parent" />
+									<then>
+										<echo>${project.artifactId} do not run build.sh</echo>
+									</then>
+									<else>
+										<property name="dist">target/${project.artifactId}</property>
+										<property name="dist-tmp">target/${project.artifactId}/tmp</property>
+										<property name="app-name">${project.artifactId}-${project.version}</property>
+										<mkdir dir="${dist-tmp}" />
+										<copy file="target/${app-name}.jar"
+											  tofile="${dist-tmp}/${app-name}.jar" />
+										<unzip src="${dist-tmp}/${app-name}.jar"
+											   dest="${dist-tmp}" />
+										<delete file="${dist-tmp}/${app-name}.jar" />
+										<move file="target/${app-name}.jar" todir="${dist}" />
+										<delete dir="${dist-tmp}" />
+										<copy todir="${dist}">
+											<fileset dir="target/classes">
+												<include name="**/*.properties" />
+												<include name="**/*.xml" />
+												<include name="**/*.yml" />
+												<include name="**/*.conf" />
+												<include name="**/*.xls" />
+												<include name="**/shell/*.sh" />
+												<include name="**/excel/*.xls" />
+												<include name="**/excel/*.xlsx" />
+												<include name="**/json/*" />
+											</fileset>
+										</copy>
+									</else>
+								</if>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

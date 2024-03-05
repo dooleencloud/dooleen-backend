@@ -1,0 +1,7 @@
+urls:
+  anon:
+    - /dooleenApi/oauth/token
+    - /oauth/token
+    - /check
+    - /authentication/removeToken
+    - /actuator/**

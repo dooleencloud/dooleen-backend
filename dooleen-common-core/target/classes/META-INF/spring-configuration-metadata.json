@@ -1,0 +1,121 @@
+{
+  "groups": [
+    {
+      "name": "dooleen.security.oauth2",
+      "type": "com.dooleen.common.core.config.oauth2.properties.OAuth2Properties",
+      "sourceType": "com.dooleen.common.core.config.oauth2.properties.OAuth2Properties"
+    },
+    {
+      "name": "spring.async.thread.pool",
+      "type": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties",
+      "sourceType": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1001",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1001MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1001MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1002",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1002MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1002MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1003",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1003MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1003MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1004",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1004MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1004MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1005",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1005MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1005MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1006",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1006MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1006MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1007",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1007MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1007MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1008",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1008MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1008MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1009",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1009MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1009MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1010",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1010MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1010MongoConfig"
+    },
+    {
+      "name": "spring.data.mongodb.dooleen1011",
+      "type": "com.dooleen.common.core.config.db.mongodb.DOOL1011MongoConfig",
+      "sourceType": "com.dooleen.common.core.config.db.mongodb.DOOL1011MongoConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "dooleen.security.oauth2.clients",
+      "type": "com.dooleen.common.core.config.oauth2.properties.OAuth2ClientProperties[]",
+      "sourceType": "com.dooleen.common.core.config.oauth2.properties.OAuth2Properties",
+      "defaultValue": []
+    },
+    {
+      "name": "dooleen.security.oauth2.jwt-signing-key",
+      "type": "java.lang.String",
+      "sourceType": "com.dooleen.common.core.config.oauth2.properties.OAuth2Properties",
+      "defaultValue": "DooleenDooleen"
+    },
+    {
+      "name": "spring.async.thread.pool.allow-core-thread-time-out",
+      "type": "java.lang.Boolean",
+      "description": "核心线程是否允许超时，默认false",
+      "sourceType": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.async.thread.pool.core-pool-size",
+      "type": "java.lang.Integer",
+      "description": "核心线程数,默认：Java虚拟机可用线程数",
+      "sourceType": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties"
+    },
+    {
+      "name": "spring.async.thread.pool.keep-alive-seconds",
+      "type": "java.lang.Integer",
+      "description": "线程池中线程最大空闲时间，默认：60，单位：秒",
+      "sourceType": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties"
+    },
+    {
+      "name": "spring.async.thread.pool.max-pool-size",
+      "type": "java.lang.Integer",
+      "description": "线程池最大线程数,默认：40000",
+      "sourceType": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties"
+    },
+    {
+      "name": "spring.async.thread.pool.queue-capacity",
+      "type": "java.lang.Integer",
+      "description": "线程队列最大线程数,默认：80000",
+      "sourceType": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties"
+    },
+    {
+      "name": "spring.async.thread.pool.thread-name-prefix",
+      "type": "java.lang.String",
+      "description": "自定义线程名前缀，默认：Async-ThreadPool-",
+      "sourceType": "com.dooleen.common.core.async.config.AsyncThreadPoolProperties"
+    }
+  ],
+  "hints": []
+}

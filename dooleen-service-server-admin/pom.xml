@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.dooleen.service.server.admin</groupId>
+	<artifactId>dooleen-service-server-admin</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>dooleen-service-server-admin</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>com.dooleen</groupId>
+		<artifactId>dooleen-common-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../dooleen-common-parent</relativePath>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>com.dooleen</groupId>
+			<artifactId>dooleen-common-core</artifactId>
+			<version>${dooleen.common.core.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>poi</artifactId>
+					<groupId>org.apache.poi</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-server</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<!--整合权限账号 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+	</dependencies>
+</project>

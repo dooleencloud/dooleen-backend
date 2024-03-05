@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问错误</title>
+    <style>
+     h1 {
+      color: #434e59;
+      font-size: 72px;
+      font-weight: 600;
+      line-height: 72px;
+      margin-bottom: 24px;
+    }
+    .desc {
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 20px;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+     
+    .img {
+	    margin-right: 80px;
+	    height: 360px;
+	    width: 100%;
+	    max-width: 430px;
+	    background-repeat: no-repeat;
+	    background-position: 50% 50%;
+	    background-size: contain;
+	  }
+	.error-page {
+	  background: #f0f2f5;
+	  margin-top: -30px;
+	  height: 100%;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+  	}
+	 .error-body {
+		  background: #f0f2f5;
+		  margin-top: -30px;
+		  height: 100%;
+		  align-items: center;
+		  justify-content: center;
+		  padding-top:200px;
+	  }
+	</style>		
+</head>
+<body  class="error-body">
+  <div class="error-page">
+    <div class="img"
+         style=" background-image: url('/img/bg/404.svg');"></div>
+    <div class="content">
+      <h1>400</h1>
+      <div class="desc">${errorMsg}</div>
+     
+    </div>
+  </div>
+</body>
+</html>

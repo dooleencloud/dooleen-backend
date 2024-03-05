@@ -1,0 +1,10 @@
+server.port=9091
+spring.profiles.active=dev
+spring.application.name=dcpp-service-server-turbine
+
+turbine.aggregator.clusterConfig=default
+turbine.appConfig=dcpp-service-app-api-zuul,dcpp-service-web-api-zuul,dcpp-service-app-api,dcpp-service-http-gateway,dcpp-service-query-points,dcpp-service-query-auth,dcpp-service-check-user,dcpp-service-user-auth,dcpp-service-points-exch,dcpp-service-points-in,dcpp-service-points-out,dcpp-service-web-api,dcpp-service-check-acct-manage,dcpp-service-clear,dcpp-service-exch-rule-manage,dcpp-service-liquidate-manage,dcpp-service-sign-manage,dcpp-service-trans-detial-manage,dcpp-service-user-info,dcpp-service-server-eureka,dcpp-service-server-turbine,dcpp-service-server-turbine-web,dcpp-service-server-zipkin
+turbine.clusterNameExpression=new String("default")
+turbine.instanceUrlSuffix=/actuator/hystrix.stream
+#management.endpoints.web.base-path=/actuator/hystrix.stream
+logging.path = /root/dcpp/logs/dcpp-service-server-turbine

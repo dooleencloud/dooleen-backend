@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>dooleen-common-core</artifactId>
+	<version>${dooleen.common.core.version}</version>
+	<packaging>jar</packaging>
+	<name>dooleen-common-core</name>
+	
+	<parent>
+		<groupId>com.dooleen</groupId>
+		<artifactId>dooleen-common-parent-normal</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../dooleen-common-parent-normal</relativePath>
+	</parent>
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<!-- apache base64 -->
+		<dependency>
+		    <groupId>commons-codec</groupId>
+		    <artifactId>commons-codec</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>3.3.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+		<!-- Jackson对自动解析JSON和XML格式的支持 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		<!-- License -->
+		<dependency>
+			<groupId>de.schlichtherle.truelicense</groupId>
+			<artifactId>truelicense-core</artifactId>
+			<version>1.33</version>
+		</dependency>
+
+		<!--easypoi-->
+		<dependency>
+			<groupId>cn.afterturn</groupId>
+			<artifactId>easypoi-spring-boot-starter</artifactId>
+			<version>4.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.skywalking</groupId>
+			<artifactId>apm-toolkit-logback-1.x</artifactId>
+			<version>8.5.0</version>
+		</dependency>
+
+		<!-- mongodb -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,152 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>独领创新在线文档</title>
+        <link rel="icon" href="/file/static/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="/file/static/css/editor.css" />
+        <script type="text/javascript" src="/file/static/scripts/jquery-1.8.2.js"></script>
+		<script type="text/javascript" src="/file/static/scripts/watermark.js"></script>
+        <script type="text/javascript" src="${docserviceApiUrl}"></script>
+        <script type="text/javascript" language="javascript">
+        //实时获取文件的最新key值
+        var keys= '';
+        $.ajax({
+            //请求方式
+            type : "GET",
+            //请求的媒体类型
+            contentType: "application/json;charset=UTF-8",
+            //请求地址
+            url : "/file/office/getFileKey?tenantId=${documentTenantId}&fileId=${documentId}",
+            //请求成功
+            async: false,
+            success : function(result) {
+                keys = result;
+                console.log("==返回成功。。。",keys);
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                console.log(e);
+            }
+        });
+        console.log("==同步请求等待中。。。",keys);
+        var doca;
+        var innerAlert = function (message) {
+            if (console && console.log)
+                console.log(message);
+        };
+
+        var onReady = function () {
+            innerAlert("Document editor ready");
+        };
+
+        var onDocumentStateChange = function (event) {
+            var title = document.title.replace(/\*$/g, "");
+            document.title = title + (event.data ? "*" : "");
+        };
+
+        var onRequestEditRights = function () {
+            location.href = location.href.replace(RegExp("mode=view\&?", "i"), "");
+        };
+
+        var onError = function (event) {
+            if (event)
+                innerAlert(event.data);
+        };
+
+        var onOutdatedVersion = function (event) {
+            location.reload(true);
+        };
+       /*  var onRequestHistory = function() {
+            docEditor.refreshHistory({
+                "currentVersion": 2,
+                "history": ${history}
+            });
+        };
+        var onRequestHistoryClose = function() {
+    		  document.location.reload();
+  		};
+  		var onRequestHistoryData = function(event) {
+      		var version = event.data;
+      		console.log('=====event===',event);
+      		console.log('=====historyData===',${historyData});
+      		docEditor.setHistoryData(${historyData})
+  		}; */
+
+        //console.log(${history});
+        var сonnectEditor = function () {
+           //alert("${history}");
+           var config={
+        		   "document":{ 
+        			   "fileType": "${documentFileType}",
+        			   "key":  keys,
+        			   "title": "${documentTitle}",
+        			   "url": "${documentUrl}",
+        		   },
+        		   "documentType": "${documentType}",
+        		   "editorConfig": {
+        			   "callbackUrl":"${documentCallbackUrl}",
+        			   "customization":{
+        					"forcesave":"true"
+        				},	   
+	        		   "user": {
+	        			   "id": "${userInfo.id}",
+	        			   "name":"${userInfo.name}"
+	        		    },
+        				"lang":"zh-CN",
+        		        //"createUrl": "",
+        		        "mode": "${mode}",
+        		        //"recent":{recent}
+        		   },
+        		   "events": {
+        		        /* "onRequestHistory": onRequestHistory,
+        		        "onRequestHistoryClose": onRequestHistoryClose,
+        		        "onRequestHistoryData": onRequestHistoryData, */
+        		    },
+        		   "height": "100%",
+        		   "width": "100%"
+           };
+
+            docEditor = new DocsAPI.DocEditor("iframeEditor", config);
+        };
+        
+        if (window.addEventListener) {
+            window.addEventListener("load", сonnectEditor);
+        } else if (window.attachEvent) {
+            window.attachEvent("load", сonnectEditor);
+        }
+    </script>
+    </head>
+    
+    <body> 
+        <div class="form">
+            <div id="iframeEditor"></div>
+        </div>
+    </body>
+    <script>
+      watermark.load({
+    	watermark_txt: "${userInfo.companyName}-${userInfo.name}" ,
+        watermark_color:'#5579ee',            //水印字体颜色
+        watermark_fontsize:'20px',          //水印字体大小
+        watermark_alpha:0.08,               //水印透明度，要求设置在大于等于0.005
+        watermark_angle:30,                 //水印倾斜度数
+        watermark_width:400,                //水印宽度
+        watermark_height:100,               //水印长度
+   	 })
+   	 
+   	 window.onresize = function(){
+    	  watermark.init({
+        	 atermark_txt: "独领创新-李秋宏" ,
+              watermark_color:'#ff0000',            //水印字体颜色
+              watermark_fontsize:'20px',          //水印字体大小
+              watermark_alpha:0.1,               //水印透明度，要求设置在大于等于0.005
+              watermark_angle:30,                 //水印倾斜度数
+              watermark_width:400,                //水印宽度
+              watermark_height:200,               //水印长度
+         	 })
+     } 
+    </script>
+   
+    
+</html>

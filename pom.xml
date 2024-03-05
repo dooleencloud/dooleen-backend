@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.dooleen</groupId>
+	<artifactId>dooleen-backend</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<distributionManagement>
+		<repository>
+			<id>rdc-releases</id>
+			<url>https://packages.aliyun.com/maven/repository/2032556-release-iqwr8u/</url>
+		</repository>
+		<snapshotRepository>
+			<id>rdc-snapshots</id>
+			<url>https://packages.aliyun.com/maven/repository/2032556-snapshot-EPZLyP/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<properties>
+		<dooleen.version>1.0.0-SNAPSHOT</dooleen.version>
+		<dooleen.common.core.version>1.0.0-SNAPSHOT</dooleen.common.core.version>
+		<sharding-sphere.version>4.0.1</sharding-sphere.version>
+		<mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
+		<velocity.version>2.2</velocity.version>
+		<commons-lang3.version>3.9</commons-lang3.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
+		<commons-io.version>2.6</commons-io.version>
+		<commons-codec.version>1.14</commons-codec.version>
+		<commons-net.version>3.6</commons-net.version>
+		<commons-pool2.version>2.8.0</commons-pool2.version>
+		<commons-text.version>1.8</commons-text.version>
+		<fastjson.version>1.2.67</fastjson.version>
+		<!-- <mysql.version>5.1.47</mysql.version> -->
+		<reflections.version>0.9.9</reflections.version>
+		<jansi.version>1.18</jansi.version>
+		<lombok.version>1.18.12</lombok.version>
+		<hutool.version>5.2.4</hutool.version>
+		<junit.version>4.12</junit.version>
+		<ini4j.version>0.5.4</ini4j.version>
+		<mapstruct.version>1.3.1.Final</mapstruct.version>
+		<shiro.version>1.5.1</shiro.version>
+		<jwt.version>3.10.1</jwt.version>
+		<guava.version>29.0-jre</guava.version>
+		<snakeyaml.version>1.26</snakeyaml.version>
+		<swagger2.version>2.9.2</swagger2.version>
+		<swagger.bootstrap.version>1.9.6</swagger.bootstrap.version>
+		<knife4j.version>2.0.2</knife4j.version>
+		<druid.version>1.1.10</druid.version>
+		<commons-httpclient.version>3.1</commons-httpclient.version>
+		<alibaba.cloud.version>2.2.1.RELEASE</alibaba.cloud.version>
+
+		<spring-boot-admin.version>2.2.2</spring-boot-admin.version>
+		<spring.boot.version>2.2.5.RELEASE</spring.boot.version>
+		<spring.cloud.version>Hoxton.SR2</spring.cloud.version>
+		<spring.platform.version>Cairo-SR8</spring.platform.version>
+		<!-- 应用工程管理 -->
+
+		<com.dooleen.gateway.version>1.0.0-SNAPSHOT</com.dooleen.gateway.version>
+		<com.dooleen.oauth.version>1.0.0-SNAPSHOT</com.dooleen.oauth.version>
+		<dooleen.common.core.version>1.0.0-SNAPSHOT</dooleen.common.core.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<!-- <modules> <module>blade-auth</module> <module>blade-gateway</module>
+		<module>blade-ops</module> <module>blade-service</module> <module>blade-service-api</module>
+		<module>blade-common</module> </modules> -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>
+		<!-- <version>1.5.12.RELEASE</version> -->
+	</parent>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud.version}</version>
+				<!-- <version>Hoxton.SR2</version> -->
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${alibaba.cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<!--sentinel限流-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+		</dependency>
+		<!-- spring-boot start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>redis.clients</groupId>
+					<artifactId>jedis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>io.lettuce</groupId>
+					<artifactId>lettuce-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-json</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- 缓存 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<!-- caffeine无法实现分布式缓存 <dependency> <groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId> </dependency> -->
+		<!-- 热启动 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- rabbitMQ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<!-- spring-boot end -->
+
+		<!-- mybatis-plus begin -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus-boot-starter.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- sharding for spring boot -->
+		<dependency>
+			<groupId>org.apache.shardingsphere</groupId>
+			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+			<version>${sharding-sphere.version}</version>
+		</dependency>
+
+		<!--sharding for spring namespace -->
+		<dependency>
+			<groupId>org.apache.shardingsphere</groupId>
+			<artifactId>sharding-jdbc-spring-namespace</artifactId>
+			<version>${sharding-sphere.version}</version>
+		</dependency>
+		<!-- swagger start -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger2.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>io.springfox</groupId> <artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger2.version}</version> </dependency> -->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>swagger-bootstrap-ui</artifactId>
+			<version>${swagger.bootstrap.version}</version>
+		</dependency>
+		<!-- swagger end -->
+
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<!-- apache commons start -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons-collections4.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>${commons-net.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>${commons-pool2.version}</version>
+		</dependency>
+		<!-- apache commons end -->
+
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>${reflections.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.fusesource.jansi</groupId>
+			<artifactId>jansi</artifactId>
+			<version>${jansi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>${snakeyaml.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+
+		<!-- ini格式处理 -->
+		<dependency>
+			<groupId>org.ini4j</groupId>
+			<artifactId>ini4j</artifactId>
+			<version>${ini4j.version}</version>
+		</dependency>
+
+		<!-- 对象属性复制 https://mapstruct.org/ -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+
+		<!-- XSS -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>${commons-text.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>${commons-httpclient.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-httpclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<!-- excel 处理 -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>uk.com.robust-it</groupId>
+			<artifactId>cloning</artifactId>
+			<version>1.9.12</version>
+		</dependency>
+		<dependency>
+			<groupId>ant-contrib</groupId>
+			<artifactId>ant-contrib</artifactId>
+			<version>1.0b3</version>
+		</dependency>
+		<!-- 邮件 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>cn.afterturn</groupId>
+			<artifactId>easypoi-spring-boot-starter</artifactId>
+			<version>4.3.0</version>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>dooleen-common-parent</module>
+		<module>dooleen-common-parent-normal</module>
+		<module>dooleen-common-core</module>
+		<module>dooleen-service-app-gateway</module>
+		<module>dooleen-service-app-mc</module>
+		<module>dooleen-service-app-oauth</module>
+		<module>dooleen-service-biz-manage</module>
+		<module>dooleen-service-file-manage</module>
+		<module>dooleen-service-general-manage</module>
+		<module>dooleen-service-system-platform</module>
+		<module>dooleen-service-system-tool</module>
+		<module>dooleen-service-data-visual</module>
+		<module>dooleen-service-smart-report</module>
+		<module>dooleen-service-server-admin</module>
+		<module>dooleen-service-smart-bi</module>
+		<module>dooleen-service-server-websocket</module>
+		<module>dooleen-service-api-doc</module>
+		<module>dooleen-service-batch</module>
+		<module>dooleen-service-server-turbine</module>
+	</modules>
+</project>

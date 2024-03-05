@@ -1,0 +1,72 @@
+# 不走token校验，但是要走访问过滤
+urls:
+  anon:
+    - /swagger-ui.html
+    - /webjars/**
+    - /swagger-resources/**
+    - /**/excelDownload/**
+    - /**/office/**
+    - /**/static/**
+    - /dooleenApi/oauth/token
+    - /dooleenReport/ureport/designer
+    - /dooleenReport/ureport/designer/loadReport
+    - /dooleenReport/ureport/preview
+    - /dooleenReport/ureport/res/**
+    - /dooleenReport/ureport/excel
+    - /dooleenReport/ureport/excel/sheet
+    - /dooleenReport/ureport/pdf
+    - /dooleenReport/ureport/word
+    - /dooleenReport/ureport/ppt
+    - /dooleenReport/ureport/excel/paging
+    - /dooleenReport/ureport/searchFormDesigner
+    - /visual/visualMap/queryVisualMap
+    - /actuator/**
+    - /druid/**
+    - /biz/sixteen/bizSixteenUserInfo/queryBizSixteenUserInfoByUserName
+    - /biz/sixteen/bizSixteenUserInfo/saveBizSixteenUserInfo
+    - /biz/sixteen/bizSixteenUserAnalysis/resultReport
+    - /v1/3rd/**
+    - /api/v3/configurations
+    - /file/office/callBack
+    - /platform/sysTenantInfo/querySysTenantInfoListPage
+
+# 不校验频繁刷新
+frequent:
+  anon:
+    - /platform/sysUserInfo/querySysUserInfoListPage
+    - /tool/sysToolDictField/querySysToolDictFieldListPage
+    - /general/generalStaffInfo/queryGeneralStaffInfoListPage
+    - /visual/visualMap/queryVisualMap
+    - /biz/plan/bizPlanManage/saveOrUpdateBizPlanManageList
+
+# 直接放行 不走任何过滤，注意不需要token时 此处需要在urls:anon:中同时配置
+notchecktoken:
+  anon:
+    - /dooleenApi/oauth/token
+    - /general/generalStaffStation/report/seatReport
+    - /biz/question/bizQuestionSendSubject/questionReport
+    - /dooleenReport/ureport/preview
+    - /dooleenReport/ureport/excel
+    - /dooleenReport/ureport/excel/sheet
+    - /dooleenReport/ureport/pdf
+    - /dooleenReport/ureport/word
+    - /dooleenReport/ureport/ppt
+    - /dooleenReport/ureport/excel/paging
+    - /dooleenReport/ureport/designer/loadReport
+    - /biz/sixteen/bizSixteenUserInfo/queryBizSixteenUserInfoByUserName
+    - /biz/sixteen/bizSixteenUserInfo/saveBizSixteenUserInfo
+    - /biz/sixteen/bizSixteenUserAnalysis/resultReport
+    - /v1/3rd/**
+    - /api/v3/configurations
+    - /file/office/callBack
+    - /platform/sysTenantInfo/querySysTenantInfoListPage
+#    - /dooleenReport/ureport/res/**
+
+# 不需要进行报文加密处理的接口写在这里
+notencode:
+  anon:
+    - /dooleenApi/oauth/token
+    - /dooleenReport/ureport
+    - /file/upload
+    - /api/v3/configurations
+    - /file/office/callBack
